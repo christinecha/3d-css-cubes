@@ -1,3 +1,4 @@
+var $plane = document.getElementById('plane')
 var $grid = document.getElementById('grid')
 var $cubes = document.getElementById('cubes')
 var $cubeModel = document.querySelector('.cube')
@@ -7,6 +8,7 @@ var $colorPreview = document.getElementById('color-preview')
 var color = '#ffaa22'
 var widthInSpaces = 10
 var heightInSpaces = 10
+var spaceSize = $plane.clientWidth / widthInSpaces
 var totalSpaces = widthInSpaces * heightInSpaces
 
 
@@ -15,8 +17,8 @@ function addSpace(index) {
   var $space = document.createElement('div')
   $space.classList.add('space')
 
-  var x = index === 0 ? 0 : (index % widthInSpaces) * 50
-  var y = index === 0 ? 0 : Math.floor(index / widthInSpaces) * 50
+  var x = index === 0 ? 0 : (index % widthInSpaces) * spaceSize
+  var y = index === 0 ? 0 : Math.floor(index / widthInSpaces) * spaceSize
 
   $space.style.left = x + 'px'
   $space.style.top = y + 'px'
@@ -36,7 +38,7 @@ function addCube(e) {
   if (e.target.classList.contains('face')) {
     target = e.target.parentNode
     layer = parseInt(target.getAttribute('data-layer')) + 1
-    cubeTranslation = `translate3d(0, 0, ${(layer) * 50}px)`
+    cubeTranslation = `translate3d(0, 0, ${layer * spaceSize}px)`
   }
 
   var $cube = $cubeModel.cloneNode(true)

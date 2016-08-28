@@ -16,7 +16,6 @@ function setDragStart(e) {
 }
 
 function calculateRotations(e) {
-  console.log(e)
   dragEnd = { x: e.pageX, y: e.pageY }
 
   var dragDiffX = dragEnd.x - dragStart.x
@@ -51,6 +50,12 @@ document.addEventListener('mouseup', function(e) {
 
 document.addEventListener('touchend', function(e) {
   isDragging = false
+})
+
+document.addEventListener('mousemove', function(e) {
+  if (!isDragging) return
+  calculateRotations(e)
+  applyRotations($plane, xRotation, yRotation, zRotation)
 })
 
 document.addEventListener('touchmove', function(e) {
