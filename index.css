@@ -26,16 +26,22 @@
 /** TOOLBAR **/
 #toolbar {
   position: fixed;
-  left: 0;
-  top: 0;
-  padding: 20px;
+  left: 20px;
+  top: 20px;
   z-index: 99;
 }
 
 #toolbar h3 {
   font-size: 9px;
   letter-spacing: 0.08em;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+#toolbar h5 {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+  color: #aaa;
 }
 
 #colorize {
@@ -58,6 +64,27 @@
   width: 20px;
   height: 20px;
   background-color: #ffaa22;
+}
+
+#perspective {
+  width: 150px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#perspective .slider {
+  height: 5px;
+  width: 100%;
+  background-color: #eee;
+}
+
+#perspective .knob {
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
+  background-color: #ccc;
+  position: absolute;
+  top: -2.5px;
 }
 
 .github {

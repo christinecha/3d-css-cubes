@@ -9,6 +9,7 @@ var yRotation = 0
 var zRotation = 45
 
 var $plane = document.getElementById('plane')
+var $perspectiveKnob = document.querySelector('#perspective .knob')
 
 /** METHODS **/
 function setDragStart(e) {
@@ -33,36 +34,31 @@ function applyRotations(node, x, y, z) {
   node.style.transform = rotationString
 }
 
+function startDrag(e) {
+  if (e.path.indexOf($perspectiveKnob) !== -1) return
+  isDragging = true
+  setDragStart(e)
+}
+
+function endDrag() {
+  if (isDragging) isDragging = false
+}
+
+function drag(e) {
+  if (!isDragging) return
+  calculateRotations(e)
+  applyRotations($plane, xRotation, yRotation, zRotation)
+}
+
 /** EVENT LISTENERS **/
-document.addEventListener('mousedown', function(e) {
-  isDragging = true
-  setDragStart(e)
-})
+document.addEventListener('mousedown', startDrag)
+document.addEventListener('touchstart', startDrag)
 
-document.addEventListener('touchstart', function(e) {
-  isDragging = true
-  setDragStart(e)
-})
+document.addEventListener('mouseup', endDrag)
+document.addEventListener('touchend',  endDrag)
 
-document.addEventListener('mouseup', function(e) {
-  isDragging = false
-})
-
-document.addEventListener('touchend', function(e) {
-  isDragging = false
-})
-
-document.addEventListener('mousemove', function(e) {
-  if (!isDragging) return
-  calculateRotations(e)
-  applyRotations($plane, xRotation, yRotation, zRotation)
-})
-
-document.addEventListener('touchmove', function(e) {
-  if (!isDragging) return
-  calculateRotations(e)
-  applyRotations($plane, xRotation, yRotation, zRotation)
-})
+document.addEventListener('mousemove', drag)
+document.addEventListener('touchmove', drag)
 
 /** RUN **/
 applyRotations($plane, xRotation, yRotation, zRotation)
