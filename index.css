@@ -60,6 +60,19 @@
   background-color: #ffaa22;
 }
 
+.github {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.github:hover path {
+  fill: #00aeef;
+}
+
 
 /** PLANE **/
 #plane-wrapper {
