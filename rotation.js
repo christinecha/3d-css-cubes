@@ -12,11 +12,12 @@ var $plane = document.getElementById('plane')
 
 /** METHODS **/
 function setDragStart(e) {
-  dragStart = { x: e.clientX, y: e.clientY }
+  dragStart = { x: e.pageX, y: e.pageY }
 }
 
 function calculateRotations(e) {
-  dragEnd = { x: e.clientX, y: e.clientY }
+  console.log(e)
+  dragEnd = { x: e.pageX, y: e.pageY }
 
   var dragDiffX = dragEnd.x - dragStart.x
   var dragDiffY = dragEnd.y - dragStart.y
