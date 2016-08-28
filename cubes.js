@@ -23,6 +23,8 @@ function addSpace(index) {
 
   $grid.appendChild($space)
 
+  $space.addEventListener('mouseenter', function(e) { e.target.style.backgroundColor = color })
+  $space.addEventListener('mouseleave', function(e) { e.target.style.backgroundColor = 'transparent' })
   $space.addEventListener('click', addCube)
 }
 
