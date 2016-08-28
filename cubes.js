@@ -32,6 +32,7 @@ function addSpace(index) {
 }
 
 function addCube(e) {
+  e.preventDefault()
   var target = e.target
   var layer = 0
   var cubeTranslation = 'translate3d(0, 0, 0)'
