@@ -35,7 +35,10 @@ function applyRotations(node, x, y, z) {
 }
 
 function startDrag(e) {
-  if (e.path.indexOf($perspectiveKnob) !== -1) return
+  if (e.path && e.path.indexOf($perspectiveKnob) !== -1) return
+
+  var targetTouches = Array.prototype.slice.apply(e.targetTouches)
+  if (targetTouches && targetTouches.indexOf($perspectiveKnob) !== -1) return
 
   // setup move listeners
   document.addEventListener('mousemove', drag)

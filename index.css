@@ -152,11 +152,11 @@
   background-color: #ffaa22;
   transform-origin: 50% 50%;
   opacity: 0.5;
+  z-index: 2;
 }
 
 .face-1 {
   background-color: #ffaa11;
-  z-index: 2;
   transform: translate3d(0, 0, 50px);
 }
 
@@ -166,30 +166,27 @@
 
 .face-2 {
   background-color: #ffaa33;
-  z-index: 2;
   transform-origin: 0% 50%;
   transform: rotateX(90deg) translate3d(0, 25px, 25px);
 }
 
 .face-3 {
   background-color: #ffbb22;
-  z-index: 1;
   transform: rotateX(90deg) translate3d(0, 25px, -25px);
 }
 
 .face-4 {
   background-color: #ff9922;
-  z-index: 2;
   transform-origin: 50% 0%;
   transform: rotateY(90deg) translate3d(-25px, 0px, -25px);
 }
 
 .face-5 {
   background-color: #eeaa22;
-  z-index: 2;
   transform-origin: 50% 0%;
   transform: rotateY(90deg) translate3d(-25px, 0px, 25px);
 }
+
 
 /** MEDIA QUERIES **/
 @media (max-width: 500px) {
