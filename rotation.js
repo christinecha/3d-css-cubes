@@ -37,7 +37,7 @@ function applyRotations(node, x, y, z) {
 function startDrag(e) {
   if (e.path && e.path.indexOf($perspectiveKnob) !== -1) return
 
-  var targetTouches = Array.prototype.slice.apply(e.targetTouches)
+  var targetTouches = e.targetTouches ? Array.prototype.slice.apply(e.targetTouches) : null
   if (targetTouches && targetTouches.indexOf($perspectiveKnob) !== -1) return
 
   // setup move listeners
@@ -55,6 +55,7 @@ function endDrag() {
 }
 
 function drag(e) {
+  e.preventDefault()
   calculateRotations(e)
 
   // when the browser is ready, apply the new positioning

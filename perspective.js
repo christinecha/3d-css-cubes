@@ -10,6 +10,7 @@ var lastX = 0
 var newX = 0
 
 function handleMouseDown(e) {
+  console.log('moo')
   document.addEventListener('mousemove', handleMouseMove)
   document.addEventListener('touchmove', handleMouseMove)
 }
@@ -20,6 +21,7 @@ function handleMouseUp(e) {
 }
 
 function handleMouseMove(e) {
+  e.preventDefault()
 
   // when the browser is ready, draw the next frame
   window.requestAnimationFrame( function(){
