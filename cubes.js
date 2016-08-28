@@ -70,7 +70,7 @@ function getRandomColor() {
   var hex = '#'
 
   for (var n = 0; n < 6; n++) {
-    var rand = Math.round(Math.random() * chars.length - 1)
+    var rand = Math.round(Math.random() * (chars.length - 1))
     hex += chars[rand]
   }
 
