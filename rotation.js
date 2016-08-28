@@ -39,11 +39,20 @@ document.addEventListener('mousedown', function(e) {
   setDragStart(e)
 })
 
+document.addEventListener('touchstart', function(e) {
+  isDragging = true
+  setDragStart(e)
+})
+
 document.addEventListener('mouseup', function(e) {
   isDragging = false
 })
 
-document.addEventListener('mousemove', function(e) {
+document.addEventListener('touchend', function(e) {
+  isDragging = false
+})
+
+document.addEventListener('touchmove', function(e) {
   if (!isDragging) return
   calculateRotations(e)
   applyRotations($plane, xRotation, yRotation, zRotation)
