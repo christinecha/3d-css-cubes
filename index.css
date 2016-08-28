@@ -1,0 +1,154 @@
+/** RESET **/
+* {
+  margin: 0 0;
+  padding: 0 0;
+  font-size: 0;
+  font-family: 'Arial', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  border: none;
+  outline: none;
+}
+
+/** SHARED **/
+.spacer {
+  height: 100%;
+  width: 0;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.is--hidden {
+  visibility: hidden;
+}
+
+/** TOOLBAR **/
+#toolbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 20px;
+  z-index: 99;
+}
+
+#toolbar h3 {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+#colorize {
+  width: 20px;
+  height: 20px;
+  background-image: url('./colors.svg');
+  background-size: cover;
+  cursor: pointer;
+  opacity: 0.6;
+  display: inline-block;
+}
+
+#colorize:hover {
+  opacity: 1;
+}
+
+#color-preview {
+  margin: 0 10px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #ffaa22;
+}
+
+
+/** PLANE **/
+#plane-wrapper {
+  width: 100vw;
+  height: 100vh;
+  perspective-origin: 50% 50%;
+  perspective: 600px;
+  cursor: move;
+  text-align: center;
+  overflow: hidden;
+}
+
+#plane {
+  display: inline-block;
+  background-color: #eee;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  vertical-align: middle;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+}
+
+/** GRID **/
+#grid {
+  position: absolute;
+}
+
+.space {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.space:hover {
+  background-color: #ffaa22;
+}
+
+/** CUBE **/
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.face {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #ffaa22;
+  transform-origin: 50% 50%;
+  opacity: 0.5;
+}
+
+.face-1 {
+  background-color: #ffaa11;
+  z-index: 2;
+  transform: translate3d(0, 0, 50px);
+}
+
+.face-1:hover {
+  opacity: 1;
+}
+
+.face-2 {
+  background-color: #ffaa33;
+  z-index: 2;
+  transform-origin: 0% 50%;
+  transform: rotateX(90deg) translate3d(0, 25px, 25px);
+}
+
+.face-3 {
+  background-color: #ffbb22;
+  z-index: 1;
+  transform: rotateX(90deg) translate3d(0, 25px, -25px);
+}
+
+.face-4 {
+  background-color: #ff9922;
+  z-index: 2;
+  transform-origin: 50% 0%;
+  transform: rotateY(90deg) translate3d(-25px, 0px, -25px);
+}
+
+.face-5 {
+  background-color: #eeaa22;
+  z-index: 2;
+  transform-origin: 50% 0%;
+  transform: rotateY(90deg) translate3d(-25px, 0px, 25px);
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div id="toolbar">
+      <h3>CLICK + DRAG TO ROTATE</h3>
+      <button id="colorize"></button>
+      <div id="color-preview"></div>
+    </div>
+
+    <div id="plane-wrapper">
+      <div class="spacer"></div>
+      <div id="plane">
+        <div id="grid"></div>
+        <div id="cubes">
+        </div>
+      </div>
+    </div>
+
+    <div class="cube is--hidden">
+      <div class="face face-1"></div>
+      <div class="face face-2"></div>
+      <div class="face face-3"></div>
+      <div class="face face-4"></div>
+      <div class="face face-5"></div>
+      <div class="face face-6"></div>
+    </div>
+
+    <script src="cubes.js" type="text/javascript"></script>
+    <script src="rotation.js" type="text/javascript"></script>
+  </body>
+</html>
