@@ -6,41 +6,40 @@ var $knob = $perspective.querySelector('.knob')
 var perspective = 600
 var minPerspective = 200
 var maxPerspective = 1200
-var isDraggingSlider = false
 var lastX = 0
 var newX = 0
 
 function handleMouseDown(e) {
-  isDraggingSlider = true
+  document.addEventListener('mousemove', handleMouseMove)
+  document.addEventListener('touchmove', handleMouseMove)
 }
 
 function handleMouseUp(e) {
-  if (!isDraggingSlider) return
-  isDraggingSlider = false
+  document.removeEventListener('mousemove', handleMouseMove)
+  document.removeEventListener('touchmove', handleMouseMove)
 }
 
 function handleMouseMove(e) {
-  if (!isDraggingSlider) return
 
-  var sliderRect = $slider.getBoundingClientRect()
-  newX = e.pageX - sliderRect.left
+  // when the browser is ready, draw the next frame
+  window.requestAnimationFrame( function(){
+    var sliderRect = $slider.getBoundingClientRect()
+    newX = e.pageX - sliderRect.left
 
-  if (newX > sliderRect.width) newX = sliderRect.width
-  if (newX < 0) newX = 0
+    if (newX > sliderRect.width) newX = sliderRect.width
+    if (newX < 0) newX = 0
 
-  $knob.style.left = newX + 'px'
+    $knob.style.left = newX + 'px'
 
-  perspective = (newX / sliderRect.width) * (maxPerspective - minPerspective) + 200
-  $planeWrapper.style.perspective = perspective + 'px'
+    perspective = (newX / sliderRect.width) * (maxPerspective - minPerspective) + 200
+    $planeWrapper.style.perspective = perspective + 'px'
+  })
 }
 
 $knob.addEventListener('mousedown', handleMouseDown)
 $knob.addEventListener('touchstart', handleMouseDown)
 
-document.addEventListener('mouseup', handleMouseUp)
-document.addEventListener('touchend', handleMouseUp)
-
-document.addEventListener('mousemove', handleMouseMove)
-document.addEventListener('touchmove', handleMouseMove)
+$knob.addEventListener('mouseup', handleMouseUp)
+$knob.addEventListener('touchend', handleMouseUp)
 
 $knob.style.left = (perspective - 200) / (maxPerspective - minPerspective) * $slider.getBoundingClientRect().width + 'px'

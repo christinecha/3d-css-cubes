@@ -35,20 +35,29 @@ function applyRotations(node, x, y, z) {
 }
 
 function startDrag(e) {
-  if (e.path && e.path.indexOf($perspectiveKnob) !== -1) return
-  if (e.targetTouches && Array.prototype.slice.apply(e.targetTouches).indexOf($perspectiveKnob) !== -1) return
-  isDragging = true
+  if (e.path.indexOf($perspectiveKnob) !== -1) return
+
+  // setup move listeners
+  document.addEventListener('mousemove', drag)
+  document.addEventListener('touchmove', drag)
+
   setDragStart(e)
 }
 
 function endDrag() {
-  if (isDragging) isDragging = false
+
+  // tear down move listeners
+  document.removeEventListener('mousemove', drag)
+  document.removeEventListener('touchmove', drag)
 }
 
 function drag(e) {
-  if (!isDragging) return
   calculateRotations(e)
-  applyRotations($plane, xRotation, yRotation, zRotation)
+
+  // when the browser is ready, apply the new positioning
+  window.requestAnimationFrame( function(){
+    applyRotations($plane, xRotation, yRotation, zRotation)
+  })
 }
 
 /** EVENT LISTENERS **/
@@ -56,10 +65,7 @@ document.addEventListener('mousedown', startDrag)
 document.addEventListener('touchstart', startDrag)
 
 document.addEventListener('mouseup', endDrag)
-document.addEventListener('touchend', endDrag)
-
-document.addEventListener('mousemove', drag)
-document.addEventListener('touchmove', drag)
+document.addEventListener('touchend',  endDrag)
 
 /** RUN **/
 applyRotations($plane, xRotation, yRotation, zRotation)
