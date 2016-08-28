@@ -63,6 +63,7 @@
 
 /** PLANE **/
 #plane-wrapper {
+  position: fixed;
   width: 100vw;
   height: 100vh;
   perspective-origin: 50% 50%;
