@@ -39,7 +39,7 @@ function handleMouseMove(e) {
 $knob.addEventListener('mousedown', handleMouseDown)
 $knob.addEventListener('touchstart', handleMouseDown)
 
-$knob.addEventListener('mouseup', handleMouseUp)
-$knob.addEventListener('touchend', handleMouseUp)
+document.addEventListener('mouseup', handleMouseUp)
+document.addEventListener('touchend', handleMouseUp)
 
 $knob.style.left = (perspective - 200) / (maxPerspective - minPerspective) * $slider.getBoundingClientRect().width + 'px'
