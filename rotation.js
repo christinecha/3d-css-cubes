@@ -35,7 +35,8 @@ function applyRotations(node, x, y, z) {
 }
 
 function startDrag(e) {
-  if (e.path.indexOf($perspectiveKnob) !== -1) return
+  if (e.path && e.path.indexOf($perspectiveKnob) !== -1) return
+  if (e.targetTouches && Array.prototype.slice.apply(e.targetTouches).indexOf($perspectiveKnob) !== -1) return
   isDragging = true
   setDragStart(e)
 }
@@ -55,7 +56,7 @@ document.addEventListener('mousedown', startDrag)
 document.addEventListener('touchstart', startDrag)
 
 document.addEventListener('mouseup', endDrag)
-document.addEventListener('touchend',  endDrag)
+document.addEventListener('touchend', endDrag)
 
 document.addEventListener('mousemove', drag)
 document.addEventListener('touchmove', drag)
