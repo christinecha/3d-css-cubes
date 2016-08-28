@@ -70,6 +70,7 @@
   width: 150px;
   margin-bottom: 20px;
   position: relative;
+  cursor: ew-resize;
 }
 
 #perspective .slider {
