@@ -1,3 +1,5 @@
+var vw = window.innerWidth
+
 var $plane = document.getElementById('plane')
 var $grid = document.getElementById('grid')
 var $cubes = document.getElementById('cubes')
@@ -10,7 +12,6 @@ var widthInSpaces = 10
 var heightInSpaces = 10
 var spaceSize = $plane.clientWidth / widthInSpaces
 var totalSpaces = widthInSpaces * heightInSpaces
-
 
 /** METHODS **/
 function addSpace(index) {
@@ -93,7 +94,28 @@ function getColorNeighbor(hex, n) {
   return '#' + hexArr.join('')
 }
 
+function isMobileAt(vw) {
+  return vw < 500
+}
+
 /** EVENT LISTENERS **/
+window.addEventListener('resize', function() {
+  if (window.innerWidth === vw) return
+  if (isMobileAt(vw) === isMobileAt(window.innerWidth)) return
+
+  vw = window.innerWidth
+  var conversion = isMobileAt(vw) ? 3 / 5 : 5 / 3
+
+  var $cubes = Array.from(document.querySelectorAll('.cube'))
+  var $spaces = Array.from(document.querySelectorAll('.space'))
+  var $nodes = $cubes.concat($spaces)
+
+  $nodes.forEach(function($node) {
+    $node.style.left = parseInt($node.style.left) * conversion + 'px'
+    $node.style.top = parseInt($node.style.top) * conversion + 'px'
+  })
+})
+
 $colorize.addEventListener('click', function() {
   color = getRandomColor()
   $colorPreview.style.backgroundColor = color
