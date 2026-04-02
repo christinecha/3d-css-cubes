@@ -140,6 +140,10 @@
 }
 
 /** CUBE **/
+#cubes {
+  transform-style: preserve-3d;
+}
+
 .cube {
   position: relative;
   transform-style: preserve-3d;
