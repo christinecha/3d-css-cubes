@@ -123,6 +123,7 @@
   vertical-align: middle;
   transform-style: preserve-3d;
   transform-origin: 50% 50%;
+  pointer-events: none;
 }
 
 /** GRID **/
@@ -137,6 +138,7 @@
   box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: pointer;
+  pointer-events: all;
 }
 
 /** CUBE **/
@@ -157,6 +159,7 @@
   transform-origin: 50% 50%;
   opacity: 0.5;
   z-index: 2;
+  pointer-events: all;
 }
 
 .face-1 {
